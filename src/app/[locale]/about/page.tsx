@@ -1,8 +1,12 @@
 import { useTranslations } from 'next-intl'
 import Footer from '../components/footer'
 import Header from '../components/header'
+import { unstable_setRequestLocale } from 'next-intl/server'
 
-const About = () => {
+const About = ({ params }: { params: { locale: string } }) => {
+  // Ensures static rendering at build time.
+  unstable_setRequestLocale(params.locale)
+
   const t = useTranslations('About')
 
   return (

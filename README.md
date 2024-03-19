@@ -27,6 +27,7 @@
 - [8. 格式化日期](#8-格式化日期)
 - [9. 国际化路径](#9-国际化路径)
 - [10. 创建语言环境切换器](#10-创建语言环境切换器)
+- [11. 如何确保静态渲染？](#11-如何确保静态渲染)
 
 ## 1. 首先查看应用程序
 
@@ -319,4 +320,100 @@ export default function LocaleSwitcherSelect(props: React.ComponentProps<'select
 }
 ```
 
+## 11. 如何确保静态渲染？
 
+Next.js 自动管理每个组件的渲染策略，在可以的情况下默认为静态渲染。如果它在组件中看到动态函数，例如获取请求，它会自动将其策略切换为动态渲染。
+
+静态渲染对性能有好处，因为它允许缓存整个组件，因此我们希望尽可能地利用它。
+
+然而，next-intl 默认情况下会将我们所有的组件变成动态的。npm run build当我们运行创建应用程序的生产版本时，这一点很清楚：
+
+![alt text](public/iShot_2024-03-20_01.47.23.png)
+
+幸运的是，next-intl 确实提供了一种恢复静态渲染的解决方法。让我们看一下。首先，我们需要告诉 Next.js [locale] 路由参数的所有可能值，以便它可以在静态构建期间解析该参数。我们通过generateStaticParams()来做到这一点。
+
+about 页面是完全可以静态渲染的，所以我们来改造下：
+```
+// app/[locale]/about/layout.tsx
+import { locales } from '@/config'
+
+export function generateStaticParams() {
+  return locales.map(locale => ({ locale }))
+}
+
+export default function RootLayout({
+  children,
+  params: { locale }
+}: Readonly<{
+  children: React.ReactNode
+  params: { locale: string }
+}>) {
+  return <div>{children}</div>
+}
+```
+这会处理参数[locale]。但是，如果我们现在运行pnpm run build，next-intl 会抛出一个错误，告诉我们它只允许动态渲染。
+
+作为权宜之计，该库为我们提供了一个添加到静态组件中的函数：unstable_setRequestLocale(locale)。此函数获取locale每个呈现页面的路由参数，并确保页面可以在构建时静态呈现。让我们在我们的布局和几个页面中使用它。
+
+```
+// app/[locale]/about/layout.tsx
+
+import { locales } from '@/config'
+import { unstable_setRequestLocale } from 'next-intl/server'
+
+export function generateStaticParams() {
+  return locales.map(locale => ({ locale }))
+}
+
+export default function RootLayout({
+  children,
+  params: { locale }
+}: Readonly<{
+  children: React.ReactNode
+  params: { locale: string }
+}>) {
+  // Ensures static rendering at build time.
+  unstable_setRequestLocale(locale)
+
+  return <div>{children}</div>
+}
+
+```
+
+✋ 注意 » Next.js 可以分别渲染布局和页面，因此最好在我们的布局和页面中包含unstable_setRequestLocale()。
+```
+// app/[locale]/about/page.tsx
+
+import { useTranslations } from 'next-intl'
+import Footer from '../components/footer'
+import Header from '../components/header'
+import { unstable_setRequestLocale } from 'next-intl/server'
+
+const About = ({ params }: { params: { locale: string } }) => {
+  // Ensures static rendering at build time.
+  unstable_setRequestLocale(params.locale)
+
+  const t = useTranslations('About')
+
+  return (
+    <>
+      <Header></Header>
+      <div className="container py-24 mx-auto px-6">
+        <h1 className="text-3xl font-bold">{t('msg')}</h1>
+      </div>
+      <Footer></Footer>
+    </>
+  )
+}
+
+export default About
+
+
+```
+
+build 后发现 about 页面已经被静态化了。 👏
+![alt text](public/iShot_2024-03-20_01.57.34.png)
+
+✋ 注意 » 具有 next-intl 的服务器组件是静态生成的，但不是静态导出的；只有客户端组件支持使用 next-intl 进行静态导出。
+
+💡 了解更多 » unstable_setRequestLocale()表示临时的 next-intl 解决方案，它将被 React 即将推出的createServerContext. 更多信息请参见[next-intl](https://next-intl-docs.vercel.app/docs/getting-started/app-router#static-rendering) 的文档。
