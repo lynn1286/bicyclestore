@@ -1,10 +1,17 @@
-import Footer from '@/app/components/footer'
-import Header from '@/app/components/header'
+import Footer from '@/app/[locale]/components/footer'
+import Header from '@/app/[locale]/components/header'
 import Image from 'next/image'
 import { getProductDetail } from './service/product'
+import { getFormatter, getTranslations } from 'next-intl/server'
 
-const ProductDetail = async ({ params: { sku } }: { params: { sku: string } }) => {
-  const { data: product } = await getProductDetail({ sku })
+const ProductDetail = async ({
+  params: { sku, locale }
+}: {
+  params: { sku: string; locale: string }
+}) => {
+  const { data: product } = await getProductDetail({ sku, locale })
+  const t = await getTranslations('Product')
+  const format = await getFormatter()
 
   return (
     <>
@@ -53,10 +60,14 @@ const ProductDetail = async ({ params: { sku } }: { params: { sku: string } }) =
                     )
                   })}
                 </ul>
-                <p className="text-slate-600">Delivery by 21 March 2024</p>
+                <p className="text-slate-600">
+                  {t('deliveryByDate', {
+                    date: format.dateTime(product.deliveryDate, { dateStyle: 'medium' })
+                  })}
+                </p>
                 <div>
                   <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-slate-900 text-slate-50 hover:bg-slate-900/90 h-10 px-4 py-2 min-w-48">
-                    Buy now
+                    {t('buyNow')}
                   </button>
                 </div>
               </div>

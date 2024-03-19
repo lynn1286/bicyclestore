@@ -1,0 +1,32 @@
+{
+  "Home": {
+    "title": "两个轮子，无限可能。",
+    "desc": "使用我们的顶级自行车系列，释放您的骑行激情。",
+    "exploreAllBicycles": "浏览所有自行车",
+    "featuredBicycles": "特色自行车",
+    "whatOurCustomersSay": "客户评价"
+  },
+  "Header": {
+    "products": "产品",
+    "about": "关于"
+  },
+  "Footer": {
+    "home": "首页",
+    "products": "产品",
+    "about": "关于",
+    "store": "© 2024 版权所有"
+  },
+  "Product": {
+    "deliveryByDate": "交付时间 {date}",
+    "buyNow": "立即购买",
+    "msg": "该页面尚未实现。"
+  },
+  "About": {
+    "msg": "该页面尚未实现。"
+  },
+  "LocaleSwitcher": {
+    "label": "送货至",
+    "en": "英语",
+    "zh": "中文"
+  }
+}

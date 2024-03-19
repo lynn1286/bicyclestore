@@ -1,7 +1,11 @@
+import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
-import Link from 'next/link'
+import { Link } from '@/navigation'
+import LocaleSwitcher from './LocaleSwitcher'
 
-const Header = () => {
+const Header = async () => {
+  const t = await getTranslations('Header')
+
   return (
     <header className="flex justify-between px-6 py-4 md:px-12">
       <div className="flex items-center">
@@ -21,12 +25,15 @@ const Header = () => {
       <div className="flex items-center">
         <nav className="flex items-center gap-4">
           <Link href="/products" className="inline-flex underline-offset-4 hover:underline">
-            Products
+            {t('products')}
           </Link>
           <Link href="/about" className="inline-flex underline-offset-4 hover:underline">
-            About
+            {t('about')}
           </Link>
         </nav>
+        <div className="ml-4">
+          <LocaleSwitcher />
+        </div>
       </div>
     </header>
   )

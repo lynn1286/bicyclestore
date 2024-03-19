@@ -1,4 +1,8 @@
-const Footer = () => {
+import { getTranslations } from 'next-intl/server'
+
+const Footer = async () => {
+  const t = await getTranslations('Footer')
+
   return (
     <footer className="container mt-auto flex flex-col items-baseline justify-between gap-2 py-6 md:flex-row mx-auto px-6">
       <nav className="flex gap-4">
@@ -6,22 +10,22 @@ const Footer = () => {
           className="text-sm underline-offset-4 opacity-90 hover:underline hover:opacity-100"
           href="/"
         >
-          Home
+          {t('home')}
         </a>
         <a
           className="text-sm underline-offset-4 opacity-90 hover:underline hover:opacity-100"
           href="/products"
         >
-          Products
+          {t('products')}
         </a>
         <a
           className="text-sm underline-offset-4 opacity-90 hover:underline hover:opacity-100"
           href="/about"
         >
-          About
+          {t('about')}
         </a>
       </nav>
-      <p className="text-sm text-gray-500">© 2024 Bicycle Store. All rights reserved.</p>
+      <p className="text-sm text-gray-500">{t('store')}</p>
       <div className="mt-4 flex gap-4 md:mt-0">
         <a className="opacity-70 hover:opacity-100" aria-label="Instagram" href="#">
           <svg

@@ -1,0 +1,32 @@
+{
+  "Home": {
+    "title": "Two wheels, endless possibilities.",
+    "desc": "Unleash your ride with our premier bicycle collection.",
+    "exploreAllBicycles": "Explore all bicycles",
+    "featuredBicycles": "Featured bicycles",
+    "whatOurCustomersSay": "What our customers say"
+  },
+  "Header": {
+    "products": "Products",
+    "about": "About"
+  },
+  "Footer": {
+    "home": "Home",
+    "products": "Products",
+    "about": "About",
+    "store": "© 2024 All rights reserved."
+  },
+  "Product": {
+    "deliveryByDate": "Delivery by {date}",
+    "buyNow": "Buy now",
+    "msg": "This page is not yet implemented."
+  },
+  "About": {
+    "msg": "This page is not yet implemented."
+  },
+  "LocaleSwitcher": {
+    "label": "Delivery to",
+    "en": "English",
+    "zh": "Chinese"
+  }
+}
