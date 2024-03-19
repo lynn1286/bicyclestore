@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { productList, productListZh } from '../route'
 import { getTranslations } from 'next-intl/server'
 import { defaultLocale } from '@/config'
+import { productList, productListZh } from '@/db/products'
 
 export async function GET(request: NextRequest, { params }: { params: { sku: string } }) {
   const locale = request.nextUrl.searchParams.get('locale') || defaultLocale

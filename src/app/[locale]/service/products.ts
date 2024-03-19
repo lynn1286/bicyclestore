@@ -1,4 +1,4 @@
-import { IProductListProps } from '@/app/api/product/route'
+import { IProductListProps } from '@/db/products'
 
 /**
  * @description:
