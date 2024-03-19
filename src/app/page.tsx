@@ -11,6 +11,7 @@ export default function Home() {
           src="/luis-gherasim-eLL2rH4FW2E-unsplash.jpg"
           alt=""
           fill
+          priority
           className="object-cover object-top 2xl:object-contain 2xl:p-4"
         ></Image>
         <div className="relative">
@@ -44,9 +45,9 @@ export default function Home() {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       className="lucide lucide-arrow-right ml-1"
                     >
                       <path d="M5 12h14"></path>
@@ -70,7 +71,8 @@ export default function Home() {
                   alt=""
                   width={250}
                   height={250}
-                  style={{ color: 'transparent' }}
+                  priority
+                  color="transparent"
                   className="aspect-[3/2] w-full overflow-hidden object-cover"
                 ></Image>
                 <div className="flex items-center justify-between p-4">
@@ -87,9 +89,9 @@ export default function Home() {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     className="lucide lucide-arrow-right mx-3 text-orange-700"
                   >
                     <path d="M5 12h14"></path>
@@ -122,9 +124,9 @@ export default function Home() {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     className="lucide lucide-arrow-right mx-3 text-orange-700"
                   >
                     <path d="M5 12h14"></path>
@@ -157,9 +159,9 @@ export default function Home() {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     className="lucide lucide-arrow-right mx-3 text-orange-700"
                   >
                     <path d="M5 12h14"></path>
@@ -182,9 +184,9 @@ export default function Home() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="lucide lucide-arrow-right ml-1"
               >
                 <path d="M5 12h14"></path>
@@ -200,15 +202,15 @@ export default function Home() {
               <div className="mt-10 flex flex-col gap-10 md:flex-row">
                 <div>
                   <p className="text-balance -indent-2">
-                    “The Roadster Classic is the best bicycle I've ever owned. It's smooth, fast,
-                    and reliable. I couldn't ask for more.”
+                    {`“The Roadster Classic is the best bicycle I've ever owned. It's smooth, fast,
+                    and reliable. I couldn't ask for more.”`}
                   </p>
                   <h3 className="mt-3 text-sm font-semibold">John Smith</h3>
                 </div>
                 <div>
                   <p className="text-balance -indent-2">
-                    “I love the Mountain Explorer. It's perfect for my weekend adventures. Highly
-                    recommended!”
+                    {`“I love the Mountain Explorer. It's perfect for my weekend adventures. Highly
+                    recommended!”`}
                   </p>
                   <h3 className="mt-3 text-sm font-semibold">Jane Brown</h3>
                 </div>

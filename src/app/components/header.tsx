@@ -10,9 +10,10 @@ const Header = () => {
             <Image
               alt="Bicycle Store"
               src="/logo.svg"
-              width={53}
-              height={32}
-              style={{ color: 'transparent' }}
+              height={0}
+              width={0}
+              style={{ width: '53px', height: '32px' }}
+              color="transparent"
             ></Image>
           </h1>
         </Link>
