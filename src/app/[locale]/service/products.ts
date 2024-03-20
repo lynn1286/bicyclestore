@@ -6,6 +6,8 @@ import { IProductListProps } from '@/db/products'
  * @return {*}
  */
 export async function getProducts(locale: string) {
+  // await new Promise(resolve => setTimeout(resolve, 50000))
+
   const url = `http://localhost:3000/api/product?locale=${locale}`
 
   try {
