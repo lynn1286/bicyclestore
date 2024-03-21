@@ -17,12 +17,12 @@
     "store": "©️ 2024 版权所有。"
   },
   "Product": {
-    "deliveryByDate": "在{date} 之前交货",
+    "deliveryByDate": "Delivery by {date}",
     "buyNow": "立即购买",
-    "msg": "此页面尚未实现。"
+    "msg": "抱歉，此功能正在开发中..."
   },
   "About": {
-    "msg": "此页面尚未实现。"
+    "msg": "抱歉，此功能正在开发中..."
   },
   "LocaleSwitcher": {
     "label": "寄送到",
@@ -32,5 +32,6 @@
   "Loading": {
     "loading": "正在加载...",
     "pleaseWait": "请耐心等待，因为第一次加载资源可能需要一些时间......"
-  }
+  },
+  "test": "测试"
 }
