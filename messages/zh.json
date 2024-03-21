@@ -19,10 +19,10 @@
   "Product": {
     "deliveryByDate": "在{date} 之前交货",
     "buyNow": "立即购买",
-    "msg": "Sorry, this feature is under development..."
+    "msg": "抱歉，此功能正在开发中..."
   },
   "About": {
-    "msg": "Sorry, this feature is under development..."
+    "msg": "抱歉，此功能正在开发中..."
   },
   "LocaleSwitcher": {
     "label": "寄送到",
