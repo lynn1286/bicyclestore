@@ -32,5 +32,6 @@
   "Loading": {
     "loading": "loading...",
     "pleaseWait": "Please be patient as it may take some time to load resources for the first time...."
-  }
+  },
+  "test": "test"
 }
