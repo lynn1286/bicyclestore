@@ -28,6 +28,7 @@
 - [9. 国际化路径](#9-国际化路径)
 - [10. 创建语言环境切换器](#10-创建语言环境切换器)
 - [11. 如何确保静态渲染？](#11-如何确保静态渲染)
+- [12. 国际化管理平台Crowdin](#12-国际化管理平台Crowdin)
 
 ## 1. 首先查看应用程序
 
@@ -417,3 +418,11 @@ build 后发现 about 页面已经被静态化了。 👏
 ✋ 注意 » 具有 next-intl 的服务器组件是静态生成的，但不是静态导出的；只有客户端组件支持使用 next-intl 进行静态导出。
 
 💡 了解更多 » unstable_setRequestLocale()表示临时的 next-intl 解决方案，它将被 React 即将推出的createServerContext. 更多信息请参见[next-intl](https://next-intl-docs.vercel.app/docs/getting-started/app-router#static-rendering) 的文档。
+
+
+## 12. 国际化管理平台Crowdin
+
+next-intl 可与所有支持翻译 JSON 文件的本地化管理平台配合使用，但 next-intl 推荐使用 Crowdin 来管理翻译。
+
+那就来试试官方推荐的平台 [Crowdin](https://crowdin.github.io/crowdin-cli/)。
+
