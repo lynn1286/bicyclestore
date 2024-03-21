@@ -35,6 +35,10 @@
   - [12.4 上传源文件](#124-上传源文件)
   - [12.5 下载翻译文件](#125-下载翻译文件)
   - [12.6 GitHub工作流集成](#126-github工作流集成)
+- [13. Nextjs常用的东西记录](#13-Nextjs常用的东西记录)
+  - [13.1 获取当前URL路径名](#131-获取当前url路径名)
+  - [13.2 编程式导航](#132-编程式导航)
+  - [13.3 获取当前 URL 的查询字符串](#133-获取当前-url-的查询字符串)
 
 ## 1. 首先查看应用程序
 
@@ -519,3 +523,64 @@ npx crowdin pull
 - [CLI文档看这里](https://crowdin.github.io/crowdin-cli/)
 - [工作流文档看这里](https://support.crowdin.com/enterprise/overview/)
 - [CLI占位符和Github其他配置文档看这里](https://developer.crowdin.com/configuration-file/#placeholders)
+
+
+## 13. Nextjs常用的东西记录
+
+### 13.1 获取当前URL路径名
+```
+  'use client'
+  import { usePathname } from 'next/navigation'
+  // next-intl 中使用内部暴露的
+  // import { usePathname } from '@/navigation'
+
+  const pathname = usePathname()
+```
+
+服务端获取当前URL路径名需要借助[中间件实现](https://stackoverflow.com/questions/74584091/how-to-get-the-current-pathname-in-the-app-directory-of-next-js),因为使用了`header`所以组件会变成动态渲染。
+
+
+
+### 13.2 编程式导航
+```
+  'use client'
+  import { useRouter } from 'next/navigation'
+  // next-intl 中使用内部暴露的
+  // import { useRouter } from '@/navigation'
+  
+  const router = useRouter()
+
+  // 服务端组件中使用
+   import { redirect } from 'next/navigation'
+  // next-intl 中使用内部暴露的
+  // import { redirect } from '@/navigation'
+
+  redirect('/login')
+```
+
+### 13.3 获取当前 URL 的查询字符串
+```
+  'use client'
+  import { useSearchParams } from 'next/navigation'
+
+  const searchParams = useSearchParams()
+
+  // 服务端组件中直接从props中读取 searchParams
+  export default function Page({
+    params,
+    searchParams,
+  }: {
+    params: { slug: string }
+    searchParams: { [key: string]: string | string[] | undefined }
+  }) {
+    return <h1>My Page</h1>
+  }
+```
+
+注意⚠️： 根据[官方文档说明](https://nextjs.org/docs/app/api-reference/functions/use-search-params),useSearchParams在静态渲染中不可以使用，如果想要在静态渲染中使用useSearchParams钩子，需要包裹在`<Suspense/>`组件中，否则，你应该设置组件为动态渲染。
+
+**还有一个重要的问题‼️**
+`Layout`中无法获取 searchParams, [官方解释](https://nextjs.org/docs/app/api-reference/file-conventions/layout#layouts-do-not-receive-searchparams)在这里。
+
+如果有需求在layout中获取当前pathname，可以考虑使用平行路由然后在客户端组件中获取pathname，当然如果你不介意动态渲染，你也可以从中间件层处理。
+
