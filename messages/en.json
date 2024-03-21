@@ -19,10 +19,10 @@
   "Product": {
     "deliveryByDate": "Delivery by {date}",
     "buyNow": "Buy now",
-    "msg": "This page is not yet implemented."
+    "msg": "Sorry, this feature is under development..."
   },
   "About": {
-    "msg": "This page is not yet implemented."
+    "msg": "Sorry, this feature is under development..."
   },
   "LocaleSwitcher": {
     "label": "Delivery to",
