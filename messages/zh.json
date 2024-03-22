@@ -8,7 +8,9 @@
   },
   "Header": {
     "products": "产品",
-    "about": "关于"
+    "about": "关于",
+    "login": "login",
+    "signout": "sign out"
   },
   "Footer": {
     "home": "首页",
@@ -33,5 +35,8 @@
     "loading": "正在加载...",
     "pleaseWait": "请耐心等待，因为第一次加载资源可能需要一些时间......"
   },
-  "test": "测试"
+  "Login": {
+    "submit": "Submit",
+    "submiting": "Submiting..."
+  }
 }
