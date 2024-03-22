@@ -30,6 +30,10 @@ export const pathnames = {
   '/about': {
     en: '/about',
     zh: '/about-zh'
+  },
+  '/login': {
+    en: '/login',
+    zh: '/login-zh'
   }
 } satisfies Pathnames<typeof locales>
 

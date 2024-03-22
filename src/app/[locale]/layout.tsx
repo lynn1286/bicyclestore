@@ -11,15 +11,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  header,
+  footer,
   params: { locale }
 }: Readonly<{
   children: React.ReactNode
+  header: React.ReactNode
+  footer: React.ReactNode
   params: { locale: string }
 }>) {
   return (
     <html lang={locale}>
-      <body className={cls(inter.className, 'flex min-h-screen flex-col text-slate-900')}>
+      <body className={cls(inter.className, 'relative flex min-h-screen flex-col text-slate-900')}>
+        {header}
         {children}
+        {footer}
       </body>
     </html>
   )

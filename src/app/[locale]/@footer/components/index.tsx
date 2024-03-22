@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server'
 
-const Footer = async () => {
+const CommonFooter = async () => {
   const t = await getTranslations('Footer')
 
   return (
@@ -83,4 +83,4 @@ const Footer = async () => {
   )
 }
 
-export default Footer
+export default CommonFooter

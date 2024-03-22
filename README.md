@@ -39,6 +39,9 @@
   - [13.1 获取当前URL路径名](#131-获取当前url路径名)
   - [13.2 编程式导航](#132-编程式导航)
   - [13.3 获取当前 URL 的查询字符串](#133-获取当前-url-的查询字符串)
+- [14. Nextjs开发问题收集](#14-Nextjs开发问题收集)
+  - [14.1 redirect 在服务端被try/catch包裹会抛出NEXT_REDIRECT错误](#141-redirect-在服务端被trycatch包裹会抛出next_redirect错误)
+  - [14.2 server action不能够直接绑定在dom上](#142-server-action不能够直接绑定在dom上)
 
 ## 1. 首先查看应用程序
 
@@ -584,3 +587,67 @@ npx crowdin pull
 
 如果有需求在layout中获取当前pathname，可以考虑使用平行路由然后在客户端组件中获取pathname，当然如果你不介意动态渲染，你也可以从中间件层处理。
 
+## 14. Nextjs开发问题收集
+
+### 14.1 redirect 在服务端被try/catch包裹会抛出NEXT_REDIRECT错误
+
+[issue](https://github.com/vercel/next.js/issues/55586)
+
+这个是文档的[解释](https://nextjs.org/docs/app/api-reference/functions/redirect)。
+
+```
+import { redirect } from 'next/navigation'
+ 
+async function fetchTeam(id) {
+  const res = await fetch('https://...')
+  if (!res.ok) return undefined
+  return res.json()
+}
+ 
+export default async function Profile({ params }) {
+  // 不需要再次包裹 try/catch
+  const team = await fetchTeam(params.id)
+  if (!team) {
+    redirect('/login')
+  }
+ 
+  // ...
+}
+```
+
+### 14.2 server action不能够直接绑定在dom上
+
+未搜索到相关解释，经实操得到结论。
+```
+'use client'
+
+import { LogoutAction } from './actions'
+
+interface ILogoutProps {
+  i18n: {
+    signout: string
+  }
+}
+
+const Logout = ({ i18n }: ILogoutProps) => {
+  // 一定得这样做
+  const handlerLogout = async () => {
+    await LogoutAction()
+  }
+
+
+  return (
+    // 这种方式会抛出Uncaught (in promise) undefined
+    // <div className="cursor-pointer" onClick={LogoutAction}>
+    //   {i18n.signout}
+    // </div>
+
+    <div className="cursor-pointer" onClick={handlerLogout}>
+      {i18n.signout}
+    </div>
+  )
+}
+
+export default Logout
+
+```

@@ -1,6 +1,4 @@
 import Image from 'next/image'
-import Header from './components/header'
-import Footer from './components/footer'
 import { getFormatter, getTranslations } from 'next-intl/server'
 import { getProducts } from './service/products'
 import { getTestimonials } from './service/testimonials'
@@ -23,7 +21,6 @@ export default async function Home({ params: { locale } }: { params: { locale: s
           className="object-cover object-top 2xl:object-contain 2xl:p-4"
         ></Image>
         <div className="relative">
-          <Header></Header>
           <div className="w-full py-24 2xl:py-12">
             <div className="container space-y-10 mx-auto px-6">
               <div className="md:px-10">
@@ -157,7 +154,6 @@ export default async function Home({ params: { locale } }: { params: { locale: s
           </div>
         </section>
       </main>
-      <Footer />
     </>
   )
 }

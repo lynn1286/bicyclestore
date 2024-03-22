@@ -8,7 +8,9 @@
   },
   "Header": {
     "products": "Products",
-    "about": "About"
+    "about": "About",
+    "login": "login",
+    "signout": "sign out"
   },
   "Footer": {
     "home": "Home",
@@ -33,5 +35,8 @@
     "loading": "loading...",
     "pleaseWait": "Please be patient as it may take some time to load resources for the first time...."
   },
-  "test": "test"
+  "Login": {
+    "submit": "Submit",
+    "submiting": "Submiting..."
+  }
 }

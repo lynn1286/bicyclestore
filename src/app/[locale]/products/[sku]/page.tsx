@@ -1,5 +1,3 @@
-import Footer from '@/app/[locale]/components/footer'
-import Header from '@/app/[locale]/components/header'
 import Image from 'next/image'
 import { getProductDetail } from './service/product'
 import { getFormatter, getTranslations } from 'next-intl/server'
@@ -16,7 +14,6 @@ const ProductDetail = async ({
   return (
     <>
       <div>
-        <Header></Header>
         <main className="mx-auto px-6 container">
           <div className="mt-24 flex flex-col md:flex-row">
             <div className="md:min-w-[450px]">
@@ -75,7 +72,6 @@ const ProductDetail = async ({
           </div>
         </main>
       </div>
-      <Footer></Footer>
     </>
   )
 }
