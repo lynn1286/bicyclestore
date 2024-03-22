@@ -21,7 +21,9 @@
   "Product": {
     "deliveryByDate": "在{date} 之前交货",
     "buyNow": "立即购买",
-    "msg": "抱歉，此功能正在开发中..."
+    "msg": "抱歉，此功能正在开发中...",
+    "asc": "asc",
+    "desc": "desc"
   },
   "About": {
     "msg": "抱歉，此功能正在开发中..."
