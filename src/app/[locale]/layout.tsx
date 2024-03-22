@@ -13,11 +13,13 @@ export default function RootLayout({
   children,
   header,
   footer,
+  modal,
   params: { locale }
 }: Readonly<{
   children: React.ReactNode
   header: React.ReactNode
   footer: React.ReactNode
+  modal: React.ReactNode
   params: { locale: string }
 }>) {
   return (
@@ -26,6 +28,7 @@ export default function RootLayout({
         {header}
         {children}
         {footer}
+        {modal}
       </body>
     </html>
   )

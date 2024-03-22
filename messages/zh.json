@@ -21,14 +21,16 @@
   "Product": {
     "deliveryByDate": "Delivery by {date}",
     "buyNow": "立即购买",
-    "msg": "抱歉，此功能正在开发中..."
+    "msg": "抱歉，此功能正在开发中...",
+    "asc": "升序",
+    "desc": "降序"
   },
   "About": {
     "msg": "抱歉，此功能正在开发中..."
   },
   "LocaleSwitcher": {
     "label": "寄送到",
-    "en": "Distr.",
+    "en": "英文",
     "zh": "中文"
   },
   "Loading": {

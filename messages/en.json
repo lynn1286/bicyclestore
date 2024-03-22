@@ -21,7 +21,9 @@
   "Product": {
     "deliveryByDate": "Delivery by {date}",
     "buyNow": "Buy now",
-    "msg": "Sorry, this feature is under development..."
+    "msg": "Sorry, this feature is under development...",
+    "asc": "asc",
+    "desc": "desc"
   },
   "About": {
     "msg": "Sorry, this feature is under development..."

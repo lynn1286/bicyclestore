@@ -68,7 +68,11 @@ export default async function Home({ params: { locale } }: { params: { locale: s
           <div className="-mx-px grid w-[calc(100%+2px)] grid-cols-1 items-stretch justify-center gap-10 md:grid-cols-3">
             {products.map(i => {
               return (
-                <Link href={{ pathname: '/products/[sku]', params: { sku: i.sku } }} key={i.id}>
+                <Link
+                  href={{ pathname: '/products/[sku]', params: { sku: i.sku } }}
+                  scroll={false}
+                  key={i.id}
+                >
                   <div className="overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm flex flex-col">
                     <Image
                       src={i.imgUrl}

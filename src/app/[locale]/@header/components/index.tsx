@@ -10,7 +10,6 @@ const CommonHeader = async () => {
   let user = cookies().get('user')?.value as string | { data: { name: string } }
   if (user) {
     user = JSON.parse(user as string) as { data: { name: string } }
-    console.log('🚀 ~  : CommonHeader -> user', user)
   }
 
   return (

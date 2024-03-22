@@ -1,7 +1,6 @@
 import { useTranslations } from 'next-intl'
 
 import { unstable_setRequestLocale } from 'next-intl/server'
-import ClientComponents from './components/client'
 
 const About = ({ params }: { params: { locale: string } }) => {
   // Ensures static rendering at build time.
@@ -11,7 +10,6 @@ const About = ({ params }: { params: { locale: string } }) => {
 
   return (
     <div className="pt-16">
-      <ClientComponents />
       <div className="container py-24 mx-auto px-6">
         <h1 className="text-3xl font-bold">{t('msg')}</h1>
       </div>
