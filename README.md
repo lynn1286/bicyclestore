@@ -615,7 +615,7 @@ export default async function Profile({ params }) {
 }
 ```
 
-如果你需要想调用notfound()函数一样调用错误页，目前Nextjs无法实现，只能通过 redirect('/500') 的方式进行。
+如果你需要想调用notfound()函数一样调用错误页，目前Nextjs无法实现
 关注这个 issue ： https://github.com/vercel/next.js/discussions/52378
 
 
