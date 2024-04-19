@@ -3,10 +3,12 @@ import { getFormatter, getTranslations } from 'next-intl/server'
 import { getProducts } from './service/products'
 import { getTestimonials } from './service/testimonials'
 import { Link } from '@/navigation'
+const sleep = (ms: number) => new Promise(r => setTimeout(r, ms))
 
 export default async function Home({ params: { locale } }: { params: { locale: string } }) {
   const t = await getTranslations('Home')
   const format = await getFormatter()
+
   const { data: products } = await getProducts(locale)
   const { data: testimonials } = await getTestimonials(locale)
 

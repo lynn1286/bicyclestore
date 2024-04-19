@@ -615,6 +615,10 @@ export default async function Profile({ params }) {
 }
 ```
 
+如果你需要想调用notfound()函数一样调用错误页，目前Nextjs无法实现，只能通过 redirect('/500') 的方式进行。
+关注这个 issue ： https://github.com/vercel/next.js/discussions/52378
+
+
 ### 14.2 server action不能够直接绑定在dom上
 
 未搜索到相关解释，经实操得到结论。
